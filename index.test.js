@@ -22,4 +22,10 @@ describe("bowling tests", () => {
             scorer.getScore(["1-", "1-", "1-", "1-", "1-", "1-", "1-", "1-", "1-", "1-"])
         ).toEqual(10);
     });
+
+    it("totals max numbers-only score correctly", () => {
+        expect(
+            scorer.getScore(["9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-"])
+        ).toEqual(90);
+    });
 });
