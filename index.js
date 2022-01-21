@@ -1,15 +1,15 @@
-function getScore(tries) {
-    if (!tries || !tries.length || tries.length !== 10) {
-        throw new Error("Must include 10 tries");
+function getScore(frames) {
+    if (!frames || !frames.length || frames.length !== 10) {
+        throw new Error("Must include 10 frames");
     }
     let score = 0;
-    for (const roll of tries) {
-        for (const action of roll.split("")) {
-            const actionScore = parseInt(action);
-            if (isNaN(actionScore)) {
+    for (const frame of frames) {
+        for (const roll of frame.split("")) {
+            const rollScore = parseInt(roll);
+            if (isNaN(rollScore)) {
                 continue;
             }
-            score += actionScore;
+            score += rollScore;
         }
     }
     return score;

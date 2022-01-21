@@ -5,13 +5,13 @@ describe("bowling tests", () => {
         expect(scorer.getScore).toEqual(expect.any(Function));
     });
 
-    it("fails if there are no tries", () => {
+    it("fails if there are no frames", () => {
         expect(() => {
             scorer.getScore([]);
         }).toThrow();
     });
 
-    it("fails if there are fewer than 10 tries", () => {
+    it("fails if there are fewer than 10 frames", () => {
         expect(() => {
             scorer.getScore(["1-", "1-", "1-", "1-", "1-", "1-", "1-", "1-", "1-"]);
         }).toThrow();
