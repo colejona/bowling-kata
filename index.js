@@ -1,6 +1,6 @@
-function getScore(rolls) {
-    if (!rolls || !rolls.length) {
-        throw new Error("Must include valid rolls");
+function getScore(tries) {
+    if (!tries || !tries.length || tries.length !== 10) {
+        throw new Error("Must include 10 tries");
     }
     return 0;
 }

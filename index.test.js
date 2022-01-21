@@ -2,20 +2,18 @@ const scorer = require("./index");
 
 describe("bowling tests", () => {
     it("function exists", () => {
-        scorer.getScore([1]);
+        expect(scorer.getScore).toEqual(expect.any(Function));
     });
 
-    it("returns a numerical score", () => {
-        const score = scorer.getScore([1]);
-
-        expect(score).toEqual(expect.any(Number));
-    });
-
-    it("fails if there are no rolls", (done) => {
-        try {
+    it("fails if there are no tries", () => {
+        expect(() => {
             scorer.getScore([]);
-        } catch {
-            done()
-        }
+        }).toThrow();
+    });
+
+    it("fails if there are fewer than 10 tries", () => {
+        expect(() => {
+            scorer.getScore([1, 1, 1, 1, 1, 1, 1, 1, 1]);
+        }).toThrow();
     });
 });
