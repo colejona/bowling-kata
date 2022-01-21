@@ -28,4 +28,12 @@ describe("bowling tests", () => {
             scorer.getScore(["9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-", "9-"])
         ).toEqual(90);
     });
+
+    it("calculates spares properly", () => {
+        expect(
+            scorer.getScore(["9/", "4-", "--", "--", "--", "--", "--", "--", "--", "--"])
+        ).toEqual(18);
+    });
+
+    // TODO: X or - after spares
 });

@@ -3,13 +3,20 @@ function getScore(frames) {
         throw new Error("Must include 10 frames");
     }
     let score = 0;
-    for (const frame of frames) {
+    for (let i = 0; i < frames.length; i++) {
+        const frame = frames[i];
         for (const roll of frame.split("")) {
             const rollScore = parseInt(roll);
             if (isNaN(rollScore)) {
-                continue;
+                if (roll === '/') {
+                    score += 10 - parseInt(frame.split("")[0]);
+                    if (i + 1 < frames.length) {
+                        score += parseInt(frames[i+1].split("")[0]);
+                    }
+                }
+            } else {
+                score += rollScore;
             }
-            score += rollScore;
         }
     }
     return score;
