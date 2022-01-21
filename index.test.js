@@ -36,4 +36,9 @@ describe("bowling tests", () => {
     });
 
     // TODO: X or - after spares
+    it("handles a miss after a spare", () => {
+        expect(
+            scorer.getScore(["9/", "--", "--", "--", "--", "--", "--", "--", "--", "--"])
+        ).toEqual(10);
+    });
 });
