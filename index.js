@@ -2,6 +2,17 @@ function isNumber(num) {
     return !isNaN(num);
 }
 
+function getTotalPinsKnockedDownInFrame(frame) {
+    let pins = 0;
+    for (const roll of frame.split("")) {
+        const pinsInRoll = parseInt(roll);
+        if (isNumber(pinsInRoll)) {
+            pins += pinsInRoll;
+        }
+    }
+    return pins;
+}
+
 function getScore(frames) {
     if (!frames || !frames.length || frames.length !== 10) {
         throw new Error("Must include 10 frames");
@@ -12,6 +23,11 @@ function getScore(frames) {
         const firstRoll = parseInt(frame[0]);
         if (isNumber(firstRoll)) {
             score += firstRoll;
+        } else if (frame[0] === "X") {
+            score += 10;
+            if (i + 1 < frames.length) {
+                score += getTotalPinsKnockedDownInFrame(frames[i + 1]);
+            }
         }
         const secondRoll = parseInt(frame[1]);
         if (isNaN(secondRoll)) {

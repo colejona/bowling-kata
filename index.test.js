@@ -35,10 +35,20 @@ describe("bowling tests", () => {
         ).toEqual(18);
     });
 
-    // TODO: X or - after spares
+    // TODO: X after spares
     it("handles a miss after a spare", () => {
         expect(
             scorer.getScore(["9/", "--", "--", "--", "--", "--", "--", "--", "--", "--"])
         ).toEqual(10);
     });
+
+    it("scores a strike", () => {
+        expect(
+            scorer.getScore(["X", "11", "--", "--", "--", "--", "--", "--", "--", "--"])
+        ).toEqual(14);
+    });
+    
+    // TODO: spare after strike
+
+    // TODO: two strikes after strike
 });
